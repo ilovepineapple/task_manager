@@ -1,14 +1,20 @@
+# frozen_string_literal: true
+
+# route application
 Rails.application.routes.draw do
-  root "main#index"
+  root 'main#index'
 
-  # get 'categories/index'
-  # get 'categories/show'
-  # get 'categories/new'
-  # get 'categories/edit'
-  # get 'categories/delete'
+  get 'menu' => 'access#menu'
+  get 'login' => 'access#new'
+  delete 'logout' => 'access#destroy'
+  resource :access, controller: 'access', only: %i[new create destroy] do
+    member do
+      get :menu
+    end
+  end
 
-  match "about", to: "main#about", via: :get
-  match "hello", to: "main#hello", via: :get
+  match 'about', to: 'main#about', via: :get
+  match 'hello', to: 'main#hello', via: :get
 
   resources :categories do
     member do
@@ -21,13 +27,4 @@ Rails.application.routes.draw do
       get :delete
     end
   end
-
-  # get "main/index"
-  # get "tasks/index"
-  # get "tasks/new"
-  # get "tasks/edit"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
