@@ -1,0 +1,28 @@
+<style>
+  .box {
+    display: flex;
+    aling-items: center;
+    justify-content: space-between;
+    width: 300px;
+  }
+</style>
+
+<div class="box">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="box">
+  <%= f.label :position %>
+  <%= f.text_field :position %>
+</div>
+
+<div class="box">
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+</div>
+
+<div class="box">
+  <%= f.label :completed %>
+  <%= f.check_box:completed %>
+</div>

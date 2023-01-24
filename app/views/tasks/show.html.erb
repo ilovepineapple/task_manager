@@ -1,0 +1,14 @@
+<h1><%= @task.name %></h1>
+
+<p><%= @task.description %></p>
+
+<span><%= @task.category&.name %></span>
+<p><%= @task.completed? ? 'Completed' : 'No completed' %>
+<hr>
+<div>
+  <%= link_to("✏️ Edit", edit_task_path(@task), class: 'action edit') %>
+  <%= link_to("🚫 Delete", delete_task_path(@task), class: 'action delete') %>
+</div>
+
+<%= link_to("Back to home", root_path) %>
+<%= link_to("Back to list", tasks_path) %>

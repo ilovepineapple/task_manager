@@ -1,0 +1,10 @@
+
+<h1>Delete Task</h1>
+
+<%= form_for(@task, method: 'delete') do |f| %>
+  <%= render(partial: 'form', locals: { f: f }) %>
+
+  <div>
+    <%= f.submit("Delete Task") %>
+  </div>
+<% end %>
