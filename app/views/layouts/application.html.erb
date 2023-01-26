@@ -61,16 +61,22 @@
             <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentY">
               <ul class="navbar-nav mr-auto lg:flex lg:flex-row">
                 <li class="nav-item">
-                  <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">Home</a>
+                  <%= link_to("🏠 Home", root_path, class: "nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out", data: { 'mdb-ripple': "true", 'mdb-ripple-color': "light" }) %>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">Features</a>
+                  <%= link_to("🗒️ Menu", menu_path, class: "nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out", data: { 'mdb-ripple': "true", 'mdb-ripple-color': "light" }) %>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">Pricing</a>
+                  <%= link_to("✅ Tasks", tasks_path, class: "nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out", data: { 'mdb-ripple': "true", 'mdb-ripple-color': "light" }) %>
                 </li>
-                <li class="nav-item mb-2 lg:mb-0">
-                  <a class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">About</a>
+                <li class="nav-item">
+                  <%= link_to("🗂️ Categories", categories_path, class: "nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out", data: { 'mdb-ripple': "true", 'mdb-ripple-color': "light" }) %>
+                </li>
+              </ul>
+              <ul class="navbar-nav flex-row justify-end">
+                <li class="nav-item flex justify-end items-center">
+                  <%= "👤 " + @username %> | 
+                  <%= button_to("🔓 Logout", logout_path, class: "nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out", data: { 'mdb-ripple': "true", 'mdb-ripple-color': "light" }, method: :delete ) %>
                 </li>
               </ul>
             </div>
