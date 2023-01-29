@@ -1,3 +1,5 @@
+<% content_for(:title, 'About') %>
+
 <h2>About</h2>
 
 <p>We create awesome applications to help you!</p>
@@ -8,3 +10,7 @@
 </ul>
 
 <%= link_to("Back to home", {controller: "main", action: "index"}) %>
+
+<%= content_for(:script) do %>
+  <script>alert('Welcome!')</script>
+<% end %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TaskManager</title>
+    <title>Task Manager<%= ' - ' + yield(:title) if content_for?(:title) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -75,8 +75,10 @@
               </ul>
               <ul class="navbar-nav flex-row justify-end">
                 <li class="nav-item flex justify-end items-center">
-                  <%= "👤 " + @username %> | 
-                  <%= button_to("🔓 Logout", logout_path, class: "nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out", data: { 'mdb-ripple': "true", 'mdb-ripple-color': "light" }, method: :delete ) %>
+                  <% if session[:user_id].present? %> 
+                    <%= "👤 " + @username %> | 
+                    <%= button_to("🔓 Logout", logout_path, class: "nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out", data: { 'mdb-ripple': "true", 'mdb-ripple-color': "light" }, method: :delete ) %>
+                  <% end %> 
                 </li>
               </ul>
             </div>
