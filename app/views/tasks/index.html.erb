@@ -8,6 +8,7 @@
   <div style="border: 1px solid #3c3c3c; margin: 20px 0; padding: 16px; border-radius: 8px">
     <h3><%= task.name %></h3>
     <span><%= task.category&.name %></span>
+    <span><%= truncate(task.description, length: 30) %></span>
     <p><%= task.completed? ? 'Completed' : 'No completed' %>
     <hr>
     <div>
