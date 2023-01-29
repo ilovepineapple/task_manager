@@ -12,5 +12,5 @@
 <%= link_to("Back to home", {controller: "main", action: "index"}) %>
 
 <%= content_for(:script) do %>
-  <script>alert('Welcome!')</script>
+  <%= javascript_tag("alert('Welcome!');") %> 
 <% end %>
