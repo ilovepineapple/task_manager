@@ -21,6 +21,8 @@ class AccessController < ApplicationController
     redirect_to(menu_path)
   end
 
+  def cancel; end
+
   def destroy
     logger.info("*** Logout User #{cookies[:username]}")
     # do logout process here
