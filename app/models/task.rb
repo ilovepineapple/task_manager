@@ -4,6 +4,9 @@
 class Task < ApplicationRecord
   belongs_to :category, optional: true
 
+  validates_presence_of :name
+  validates_length_of :name, maximum: 50
+
   scope :complete, -> { where(completed: true) }
   scope :incoplete, -> { where(completed: false) }
   scope :sorted, -> { order(:position) }
