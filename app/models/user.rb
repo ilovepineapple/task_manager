@@ -2,6 +2,11 @@
 
 # User model record
 class User < ApplicationRecord
+  validates_presence_of :first_name
+  validates_length_of :first_name, minimum: 1
+
+  scope :sorted, -> { order(:last_name, :first_name) }
+
   def full_name
     [first_name, last_name].join(' ')
   end

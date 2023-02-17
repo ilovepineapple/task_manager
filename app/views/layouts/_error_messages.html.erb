@@ -1,9 +1,9 @@
-<% if object && object.errors.size > 0 %>
+<% if map_error && map_error.errors.size > 0 %>
   <div id="error-explanation">
-		<h2><%= pluralize(object.errors.size, 'error') %> prohibited this record from being saved</h2>
+		<h2><%= pluralize(map_error.errors.size, 'error') %> prohibited this record from being saved</h2>
 		<p>There were problems with the following fields:</p>
 		<ul>
-		<% object.errors.full_messages.each do |msg| %>
+		<% map_error.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
 		<% end %>
 		</ul>
