@@ -2,6 +2,8 @@
 
 # Moder for user tasks
 class Task < ApplicationRecord
+  attr_accessor :skip_titleize_name
+
   belongs_to :category, optional: true
 
   validates_presence_of :name
@@ -11,11 +13,13 @@ class Task < ApplicationRecord
 
   validate :description_has_no_prohibited_words
 
-  before_validation :titleize_name, :set_default_position
+  before_validation :titleize_name, unless: :skip_titleize_name
+  before_validation :set_default_position,
+    if: Proc.new {|t| t.position.blank? || t.position < 1}
   before_create :log_create
   before_update :log_update
   after_save :log_save
-  after_commit :cleaning_reminder
+  after_commit :cleaning_reminder, if: :too_many_records?
 
   scope :complete, -> { where(completed: true) }
   scope :incoplete, -> { where(completed: false) }
@@ -40,10 +44,8 @@ class Task < ApplicationRecord
     end
 
     def set_default_position
-      if position.blank? || position < 1
-        max = Task.maximum(:position) || 0
-        self.position = max + 1
-      end
+      max = Task.maximum(:position) || 0
+      self.position = max + 1
     end
 
     def log_create
@@ -60,5 +62,9 @@ class Task < ApplicationRecord
 
     def cleaning_reminder
       logger.debug("Remember to prune old tasks")
+    end
+
+    def too_many_records?
+      Task.count > 4
     end
 end
